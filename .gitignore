@@ -1,0 +1,26 @@
+# Private local configuration and runtime state
+.env
+.env.*
+!.env.example
+runtime-local.json
+verified-dbkeys.json
+*-dbkeys.json
+*.db
+*.db-*
+*.sqlite*
+*.log
+*.plist
+outbox/
+auto-reply/
+logs/
+evidence/
+# Local dependencies and build outputs
+.venv/
+.codec-venv/
+node_modules/
+__pycache__/
+*.py[cod]
+*.dylib
+*.o
+.DS_Store
+dist/

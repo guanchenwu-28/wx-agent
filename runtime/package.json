@@ -1,0 +1,8 @@
+{
+  "name": "wx-agent-native-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Frida host dependency; no install hook starts WeChat or a listener",
+  "dependencies": { "frida": "17.23.2" },
+  "engines": { "node": ">=22" }
+}

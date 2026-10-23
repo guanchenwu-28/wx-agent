@@ -1,0 +1,95 @@
+{
+  "tested_on": "macOS arm64",
+  "date": "2026-10-23",
+  "installation": {
+    "python_dependencies_installed": true,
+    "node_frida_installed": true,
+    "native_bridge_compiled": true,
+    "listener_started": false,
+    "launchd_installed": false,
+    "wechat_started": false
+  },
+  "checks": [
+    {
+      "name": "platform",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "python",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "configured_python",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "cryptography",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "node",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "clang",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "codex",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "zstd_decoder",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "node_version",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "frida_module",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "frida_import",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "test_app",
+      "ok": false,
+      "required": true
+    },
+    {
+      "name": "profile",
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "verified_keys",
+      "ok": false,
+      "required": true
+    },
+    {
+      "name": "voice_encoder",
+      "ok": false,
+      "required": false
+    }
+  ],
+  "end_to_end_verified": false,
+  "notes": [
+    "Test WeChat copy and verified database keys were intentionally not provisioned in the isolated installation.",
+    "Optional voice encoder was not installed in this run.",
+    "No app attachment, chat reads, real messages or production service changes were performed."
+  ]
+}

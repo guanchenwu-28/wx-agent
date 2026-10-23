@@ -1,0 +1,6 @@
+interface:
+  display_name: "微信底层收发"
+  short_description: "读取指定聊天、原生发消息，按联系人或群开启自动回复，说暂停就停止"
+  default_prompt: "使用 $wechat-native 按我的要求给指定联系人发消息或启停自动回复。"
+policy:
+  allow_implicit_invocation: true
