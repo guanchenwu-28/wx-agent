@@ -6,6 +6,35 @@
 
 > 当前交付为 **macOS Apple Silicon 的源码安装包**。历史验证基线是微信 **4.1.13 / 269602** 的授权测试副本；不包含微信客户端、账号数据或数据库密钥。全新机器还需完成测试副本和本机数据访问准备，不是双击即可接管任意微信版本的通用安装器。
 
+## 下载与安装
+
+| 入口 | 用途 |
+| --- | --- |
+| [完整安装包](packages/wx-agent-v0.1.1-macos-arm64-source.zip) | 包含 Skill、runtime、安装脚本和说明；下载文件后解压 |
+| [单独 Skill 包](packages/wechat-native-v0.1.1-skill.zip) | 已经安装 runtime 时使用 |
+| [SHA256 校验文件](packages/SHA256SUMS.txt) | 核对下载文件完整性 |
+| [安装说明](INSTALL.md) | 环境准备、首次配置、检查与暂停 |
+
+克隆仓库或解压完整安装包，进入 `wx-agent` 目录后执行：
+
+```sh
+./install.sh
+```
+
+默认安装 runtime、Skill、依赖并编译原生桥。需要指定新版 Python 时：
+
+```sh
+./install.sh --python /绝对路径/python3
+```
+
+安装后检查：
+
+```sh
+"$HOME/Library/Application Support/WeChatLocalTool/bin/wx-agent-doctor"
+```
+
+安装包直接保存在本仓库的 `packages/`，GitHub Release 同步提供同一份文件。
+
 ## 链路
 
 ```mermaid
@@ -31,6 +60,8 @@ flowchart LR
 
 | 路径 | 内容 |
 | --- | --- |
+| `install.sh`、`INSTALL.md` | 统一安装入口和完整说明 |
+| `packages/` | 完整安装包、Skill 包与校验文件 |
 | `skills/wechat-native/` | AI 操作规范、控制入口、使用及版本适配说明 |
 | `runtime/` | 微信原生桥、读取器、事件监听、自动回复、Codex 调用及版本适配 |
 | `scripts/` | 源码安装与环境检查工具 |
@@ -39,7 +70,7 @@ flowchart LR
 
 ## 安装与使用
 
-完整步骤见 [安装说明](docs/INSTALL.md)。安装动作本身不配置联系人、不启动监听、不发送消息。
+完整步骤见 [安装说明](INSTALL.md)。安装动作本身不配置联系人、不启动监听、不发送消息。
 
 安装并完成本机验证后，在 AI 对话中使用 `wechat-native`：
 
@@ -63,3 +94,13 @@ flowchart LR
 ## 打包原则
 
 源码包包含 Skill、运行源码、适配特征、安装脚本与测试；不包含聊天记录、联系人配置、账号密钥、发送日志、个人队列、微信客户端或第三方 SDK 二进制。安装后生成的本机配置仅留在本机。
+
+## 维护安装包
+
+修改源码后更新根目录 `VERSION`，将要打包的源文件纳入 Git，再执行：
+
+```sh
+python3 scripts/package.py
+```
+
+脚本从 Git 管理的工作区文件生成 `packages/` 中的两个 ZIP 和校验文件，排除 `packages/` 自身，避免安装包递归包含旧安装包。将源码与更新后的安装包一起提交；同版本不覆盖已经发布的历史 Release。

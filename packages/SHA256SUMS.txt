@@ -1,0 +1,2 @@
+8dc26e4203b0f065872555e0cafdc4c11cdde7acfc43f251137b3364f2aa951b  wx-agent-v0.1.1-macos-arm64-source.zip
+3b819a366ebf25068736086646add23f21b9cdcec6bac1e6dea0f8d8e059e2c3  wechat-native-v0.1.1-skill.zip
